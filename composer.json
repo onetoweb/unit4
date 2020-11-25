@@ -1,0 +1,29 @@
+{
+    "name": "onetoweb/unit4",
+    "description": "Unit4 API Client",
+    "keywords": [
+        "api",
+        "php",
+        "unit4"
+    ],
+    "type": "library",
+    "homepage": "https://github.com/onetoweb/unit4",
+    "authors": [
+        {
+            "name": "Jonathan van 't Ende",
+            "email": "jvantende@onetoweb.nl"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "guzzlehttp/guzzle": "^6.5"
+    },
+    "require-dev": {
+        "symfony/error-handler": "^5.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Onetoweb\\Unit4\\": "src/"
+        }
+    }
+}
