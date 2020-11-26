@@ -485,6 +485,34 @@ class Client
     }
     
     /**
+     * @param array $query = []
+     *
+     * @return array|null
+     *
+     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/POST-api-database-ProcessOrderCommand_journalId_fiscalYear_periodNumber_invoiceDate_orderId_journalTransaction
+     */
+    public function processOrderCommand(array $query = []): ?array
+    {
+        $this->checkRequiredDatabase(__FUNCTION__);
+        
+        return $this->post("/api/{$this->database}/ProcessOrderCommand", [], $query);
+    }
+    
+    /**
+     * @param array $query = []
+     *
+     * @return array|null
+     *
+     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-GetShippingOrderDocumentCommand_orderId_format
+     */
+    public function getShippingOrderDocumentCommand(array $query = []): ?array
+    {
+        $this->checkRequiredDatabase(__FUNCTION__);
+        
+        return $this->get("/api/{$this->database}/GetShippingOrderDocumentCommand", $query);
+    }
+    
+    /**
      * @return array|null
      * 
      * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-OrderLineTypeNVL
@@ -650,6 +678,21 @@ class Client
     }
     
     /**
+     * @param int $fiscalYear
+     * @param int $invoiceState
+     *
+     * @return array|null
+     *
+     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-CustomerInvoiceInfoList-ByFiscalYear-fiscalYear-invoiceState
+     */
+    public function getCustomerInvoiceInfoListByFiscalYear(int $fiscalYear, int $invoiceState): ?array
+    {
+        $this->checkRequiredDatabase(__FUNCTION__);
+        
+        return $this->get("/api/{$this->database}/CustomerInvoiceInfoList/ByFiscalYear/$fiscalYear/$invoiceState");
+    }
+    
+    /**
      * @param string $orderId
      * @param array $query = []
      *
@@ -662,6 +705,36 @@ class Client
         $this->checkRequiredDatabase(__FUNCTION__);
         
         return $this->get("/api/{$this->database}/Documents/Invoice/ByOrderId/$orderId", $query);
+    }
+    
+    /**
+     * @param string $invoiceId
+     * @param array $query = []
+     *
+     * @return array|null
+     *
+     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-Documents-Invoice-invoiceId_format
+     */
+    public function getDocumentInvoiceByInvoiceId(string $invoiceId, array $query = []): ?array
+    {
+        $this->checkRequiredDatabase(__FUNCTION__);
+        
+        return $this->get("/api/{$this->database}/Documents/Invoice/$invoiceId", $query);
+    }
+    
+    /**
+     * @param string $orderId
+     * @param array $query = []
+     *
+     * @return array|null
+     *
+     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-Documents-Order-orderId_format
+     */
+    public function getDocumentOrder(string $orderId, array $query = []): ?array
+    {
+        $this->checkRequiredDatabase(__FUNCTION__);
+        
+        return $this->get("/api/{$this->database}/Documents/Order/$orderId", $query);
     }
     
     /**

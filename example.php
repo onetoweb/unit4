@@ -110,6 +110,13 @@ if ($client->getToken()) {
             ]],
         ]);
         
+        // get shipping order document command
+        $orderId = 'order_id';
+        $shippingOrderDocument = $client->getShippingOrderDocumentCommand([
+            'orderId' => $orderId,
+            'format' => 1
+        ]);
+        
         // get open orders
         $openOrders = $client->getOrderInfoListOpenOrders();
         
@@ -119,6 +126,19 @@ if ($client->getToken()) {
         
         // get order line types
         $orderLineTypes = $client->getOrderLineTypeNVL();
+        
+        // process order command
+        $journalId = 'V';
+        $orderId = 'order_id';
+        $fiscalYear = 2020;
+        $periodNumber = 12;
+        $result = $client->processOrderCommand([
+            'journalId' => $journalId,
+            'fiscalYear' => $fiscalYear,
+            'periodNumber' => $periodNumber = 12,
+            'invoiceDate' => date('d-m-Y'),
+            'orderId' => $orderId,
+        ]);
         
         // get accounts
         $fiscalYear = 2020;
@@ -168,6 +188,11 @@ if ($client->getToken()) {
             'invoiceDate' => '2020-12-01',
         ]);
         
+        // get customer invoice info list by fiscal year
+        $fiscalYear = 2020;
+        $invoiceState = 1;
+        $customerInvoices = $client->getCustomerInvoiceInfoListByFiscalYear($fiscalYear, $invoiceState);
+        
         // get report template configuration list
         $reportTemplateConfigurationList = $client->getReportTemplateConfigurationList();
         
@@ -184,6 +209,11 @@ if ($client->getToken()) {
         // get document invoice by order id
         $orderId = 'order_id';
         $documentInvoice = $client->getDocumentInvoiceByOrderId($orderId, [
+            'format' => 2
+        ]);
+        
+        // get document invoice by invoice id
+        $documentInvoice = $client->getDocumentInvoiceByInvoiceId($invoiceId, [
             'format' => 2
         ]);
         
