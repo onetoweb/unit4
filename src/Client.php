@@ -443,6 +443,47 @@ class Client
     }
     
     /**
+     * @return array|null
+     * 
+     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-CompanyContactPersonList
+     */
+    public function getCompanyContactPersonList(): ?array
+    {
+        $this->checkRequiredDatabase(__FUNCTION__);
+        
+        return $this->get("/api/{$this->database}/CompanyContactPersonList");
+    }
+    
+    /**
+     * @param string $organizationId
+     * 
+     * @return array|null
+     *
+     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-AddressList-organizationId
+     */
+    public function getAddressList(string $organizationId): ?array
+    {
+        $this->checkRequiredDatabase(__FUNCTION__);
+        
+        return $this->get("/api/{$this->database}/AddressList/$organizationId");
+    }
+    
+    /**
+     * @param array $data = []
+     * 
+     * @return array|null
+     * 
+     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/POST-api-database-Address
+     */
+    public function createAddress(array $data = [])
+    {
+        $this->checkRequiredDatabase(__FUNCTION__);
+        
+        return $this->post("/api/{$this->database}/Address", $data);
+        
+    }
+    
+    /**
      * @param array $data = []
      *
      * @return array|null
@@ -468,6 +509,30 @@ class Client
         $this->checkRequiredDatabase(__FUNCTION__);
         
         return $this->get("/api/{$this->database}/OrderInfoList/OpenOrders", $query);
+    }
+    
+    /**
+     * @return array|null
+     *
+     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-OrderStateNVL
+     */
+    public function getOrderStateNVL(): ?array
+    {
+        $this->checkRequiredDatabase(__FUNCTION__);
+        
+        return $this->get("/api/{$this->database}/OrderStateNVL");
+    }
+    
+    /**
+     * @return array|null
+     *
+     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-OrderTypeNVL
+     */
+    public function getOrderTypeNVL(): ?array
+    {
+        $this->checkRequiredDatabase(__FUNCTION__);
+        
+        return $this->get("/api/{$this->database}/OrderTypeNVL");
     }
     
     /**

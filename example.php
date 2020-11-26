@@ -2,6 +2,8 @@
 
 require 'vendor/autoload.php';
 
+Symfony\Component\ErrorHandler\Debug::enable();
+
 session_start();
 
 use Onetoweb\Unit4\Client;
@@ -97,13 +99,15 @@ if ($client->getToken()) {
         $client->deleteCustomer($customerId);
         
         // create order
-        $customerId = 'customer_id';
+        $customerId = 'customer_id'
+        $deliveryAddressId = 'delivery_address_id'
         $productId = 'product_id';
         $order = $client->createOrder([
             'customerId' => $customerId,
             'reference' => 'test order',
             'orderDate' => date('d-m-Y'),
             'paymentConditionId' => '1',
+            'deliveryAddressId' => $deliveryAddressId,
             'orderLines' => [[
                 'productId' => $productId,
                 'quantityOrdered' => 1,
@@ -124,6 +128,12 @@ if ($client->getToken()) {
         $orderId = 'order_id';
         $order = $client->getOrder($orderId);
         
+        // get order state NVL
+        $orderStates = $client->getOrderStateNVL();
+        
+        // get order type NVL
+        $orderTypes $client->getOrderTypeNVL();
+        
         // get order line types
         $orderLineTypes = $client->getOrderLineTypeNVL();
         
@@ -139,6 +149,20 @@ if ($client->getToken()) {
             'invoiceDate' => date('d-m-Y'),
             'orderId' => $orderId,
         ]);
+        
+        // create address
+        $organizationId = 'organization_id';
+        $address = $client->createAddress([
+            'organizationId' => $organizationId,
+            'street1' => 'street 1',
+            'telephone' => '0123456789',
+            'zipCode' => '1000AA',
+            'city' => 'city',
+        ]);
+        
+        // get address list
+        $organizationId = 'organization_id';
+        $addressList = $client->getAddressList($organizationId);
         
         // get accounts
         $fiscalYear = 2020;
@@ -192,6 +216,9 @@ if ($client->getToken()) {
         $fiscalYear = 2020;
         $invoiceState = 1;
         $customerInvoices = $client->getCustomerInvoiceInfoListByFiscalYear($fiscalYear, $invoiceState);
+        
+        // get company contact person list
+        $companyContactPerson = $client->getCompanyContactPersonList();
         
         // get report template configuration list
         $reportTemplateConfigurationList = $client->getReportTemplateConfigurationList();
