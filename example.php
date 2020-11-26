@@ -2,11 +2,9 @@
 
 require 'vendor/autoload.php';
 
-Symfony\Component\ErrorHandler\Debug::enable();
-
 session_start();
 
-use Onetoweb\Unit4\Client;
+use Onetoweb\Unit4\Unit4Client;
 use Onetoweb\Unit4\Token;
 use Onetoweb\Unit4\Exception\RequestException;
 
@@ -18,7 +16,7 @@ $version = 22;
 $sandbox = true;
 
 // setup client
-$client = new Client($clientId, $clientSecret, $redirectUrl, $version, $sandbox);
+$client = new Unit4Client($clientId, $clientSecret, $redirectUrl, $version, $sandbox);
 
 // set database
 $database = 'database';
