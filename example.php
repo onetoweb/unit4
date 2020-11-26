@@ -99,8 +99,8 @@ if ($client->getToken()) {
         $client->deleteCustomer($customerId);
         
         // create order
-        $customerId = 'customer_id'
-        $deliveryAddressId = 'delivery_address_id'
+        $customerId = 'customer_id';
+        $deliveryAddressId = 'delivery_address_id';
         $productId = 'product_id';
         $order = $client->createOrder([
             'customerId' => $customerId,
@@ -132,7 +132,7 @@ if ($client->getToken()) {
         $orderStates = $client->getOrderStateNVL();
         
         // get order type NVL
-        $orderTypes $client->getOrderTypeNVL();
+        $orderTypes = $client->getOrderTypeNVL();
         
         // get order line types
         $orderLineTypes = $client->getOrderLineTypeNVL();
