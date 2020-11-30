@@ -57,7 +57,7 @@ if (!isset($_SESSION['token']) and !isset($_GET['code'])) {
     
 }
 
-// make unit 4 request after token isset
+// make unit 4 request after token is set
 if ($client->getToken()) {
     
     try {
@@ -122,6 +122,9 @@ if ($client->getToken()) {
         // get open orders
         $openOrders = $client->getOrderInfoListOpenOrders();
         
+        // get orders ready to print invoice
+        $ordersReadyToPrintInvoice = $client->getOrderInfoListOrdersReadyToPrintInvoice();
+        
         // get order
         $orderId = 'order_id';
         $order = $client->getOrder($orderId);
@@ -143,7 +146,7 @@ if ($client->getToken()) {
         $result = $client->processOrderCommand([
             'journalId' => $journalId,
             'fiscalYear' => $fiscalYear,
-            'periodNumber' => $periodNumber = 12,
+            'periodNumber' => 12,
             'invoiceDate' => date('d-m-Y'),
             'orderId' => $orderId,
         ]);
@@ -200,6 +203,7 @@ if ($client->getToken()) {
         $journalTypeNVL = $client->getJournalTypeNVL();
         
         // create customer invoice
+        $customerId = 'customer_id';
         $customerInvoice = $client->createCustomerInvoice([
             'customerId' => $customerId,
             'fiscalYear' => 2020,
@@ -234,12 +238,24 @@ if ($client->getToken()) {
         // get document invoice by order id
         $orderId = 'order_id';
         $documentInvoice = $client->getDocumentInvoiceByOrderId($orderId, [
-            'format' => 2
+            'format' => 1
         ]);
         
         // get document invoice by invoice id
         $documentInvoice = $client->getDocumentInvoiceByInvoiceId($invoiceId, [
-            'format' => 2
+            'format' => 1
+        ]);
+        
+        // get document invoice by order id for web
+        $orderId = 'order_id';
+        $invoice = $client->getDocumentInvoiceByOrderIdForWeb($orderId, [
+            'format' => 1,
+        ]);
+        
+        // get document invoice for web
+        $invoiceId = 'invoice_id';
+        $invoice = $client->getDocumentInvoiceForWeb($orderId, [
+            'format' => 1,
         ]);
         
     } catch (RequestException $requestException) {

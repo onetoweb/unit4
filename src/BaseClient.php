@@ -208,11 +208,11 @@ class BaseClient
      * @param string $endpoint
      * @param array $query = []
      *
-     * @return array|null
+     * @return mixed
      */
-    public function get(string $endpoint, array $query = []): ?array
+    public function get(string $endpoint, array $query = [], bool $decode = true)
     {
-        return $this->request(self::METHOD_GET, $endpoint, [], $query);
+        return $this->request(self::METHOD_GET, $endpoint, [], $query, true, $decode);
     }
     
     /**
@@ -261,9 +261,9 @@ class BaseClient
      * 
      * @throws RequestException if the server request contains a error response
      * 
-     * @return array|null
+     * @return mixed
      */
-    public function request(string $method = self::METHOD_GET, string $endpoint, array $data = [], array $query = [], bool $json = true): ?array
+    public function request(string $method = self::METHOD_GET, string $endpoint, array $data = [], array $query = [], bool $json = true, bool $decode = true)
     {
         // build request haders
         $headers = [
@@ -317,7 +317,12 @@ class BaseClient
             // get contents
             $contents = $result->getBody()->getContents();
             
-            return json_decode($contents, true);
+            // return data
+            if ($decode) {
+                return json_decode($contents, true);
+            } else {
+                return $contents;
+            }
             
         } catch (GuzzleRequestException|ClientException $guzzleException) {
             
