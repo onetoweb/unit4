@@ -413,6 +413,20 @@ class Unit4Client extends BaseClient
     }
     
     /**
+     * @param string $invoiceId
+     *
+     * @return array|null
+     *
+     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-CustomerInvoice-invoiceId
+     */
+    public function getCustomerInvoice(string $invoiceId): ?array
+    {
+        $this->checkRequiredDatabase(__FUNCTION__);
+        
+        return $this->get("/api/{$this->database}/CustomerInvoice/$invoiceId");
+    }
+    
+    /**
      * @param int $fiscalYear
      * @param int $invoiceState
      *
@@ -487,12 +501,6 @@ class Unit4Client extends BaseClient
         return $this->get("/api/{$this->database}/Documents/Invoice/ByOrderIdForWeb/$orderId", $query, false);
     }
     
-    
-    
-    
-    
-    
-    
     /**
      * @param string $invoiceId
      * @param array $query = []
@@ -507,8 +515,6 @@ class Unit4Client extends BaseClient
         
         return $this->get("/api/{$this->database}/Documents/Invoice/ForWeb/$invoiceId", $query, false);
     }
-    
-    
     
     /**
      * @param int $fiscalYear
@@ -572,5 +578,59 @@ class Unit4Client extends BaseClient
         $this->checkRequiredDatabase(__FUNCTION__);
         
         return $this->get("/api/{$this->database}/DocumentTypeInfo/$type");
+    }
+    
+    /**
+     * @param array $query = []
+     *
+     * @return int|null
+     *
+     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/POST-api-database-GetNextJournalTransactionCommand_fiscalYear_journalId
+     */
+    public function getNextJournalTransactionCommand(array $query = []): ?int
+    {
+        $nextJournalTransaction = $this->post("/api/{$this->database}/GetNextJournalTransactionCommand", [], $query);
+        
+        return $nextJournalTransaction['nextJournalTransaction'];
+    }
+    
+    /**
+     * @param array $data = []
+     *
+     * @return array|null
+     *
+     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/POST-api-database-FinTrans
+     */
+    public function createFinTrans(array $data = []): ?array
+    {
+        $this->checkRequiredDatabase(__FUNCTION__);
+        
+        return $this->post("/api/{$this->database}/FinTrans", $data);
+    }
+    
+    /**
+     * @param array $query
+     *
+     * @return array|null
+     *
+     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/POST-api-database-ApproveInvoicePaymentCommand_invoiceId_approverId
+     */
+    public function approveInvoicePaymentCommand(array $query): ?array
+    {
+        $this->checkRequiredDatabase(__FUNCTION__);
+        
+        return $this->post("/api/{$this->database}/ApproveInvoicePaymentCommand", [], $query);
+    }
+    
+    /**
+     * @return array|null
+     * 
+     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-CompanyDetails
+     */
+    public function getCompanyDetails()
+    {
+        $this->checkRequiredDatabase(__FUNCTION__);
+        
+        return $this->get("/api/{$this->database}/CompanyDetails");
     }
 }

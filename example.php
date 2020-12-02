@@ -214,6 +214,10 @@ if ($client->getToken()) {
             'invoiceDate' => '2020-12-01',
         ]);
         
+        // get customer invoice
+        $invoiceId = 'invoice_id';
+        $invoice = $client->getCustomerInvoice($invoiceId);
+        
         // get customer invoice info list by fiscal year
         $fiscalYear = 2020;
         $invoiceState = 1;
@@ -256,6 +260,48 @@ if ($client->getToken()) {
         $invoiceId = 'invoice_id';
         $invoice = $client->getDocumentInvoiceForWeb($orderId, [
             'format' => 1,
+        ]);
+        
+        // get next journal transaction command
+        $fiscalYear = 2020;
+        $journalId = 'K';
+        $journalTransaction = $client->getNextJournalTransactionCommand([
+            'fiscalYear' => $fiscalYear,
+            'journalId' => $journalId,
+        ]);
+        
+        // create fin trans
+        $invoiceId = 'invoice_id';
+        $customerId = 'customer_id';
+        $periodNumber = 1;
+        $finTrans = $client->createFinTrans([
+            'journalId' => $journalId,
+            'fiscalYear' => $fiscalYear,
+            'periodNumber' => $periodNumber,
+            'journalTransaction' => $journalTransaction,
+            'transactionDate' => date('d-m-Y'),
+            'description' => 'description',
+            'finTransEntries' => [[
+                '$type' => 'UNIT4.Multivers.API.BL.Financial.Edit.CustomerEntryProxy, UNIT4.Multivers.API.Web.WebApi.Model',
+                'customerEntryPayments' => [[
+                    'amountPaidCur' => 100,
+                    'description' => 'invoice '.$invoiceId,
+                    'invoiceId' => $invoiceId
+                ]],
+                'customerId' => $customerId,
+                'transactionDate' => date('d-m-Y'),
+            ]],
+        ]);
+        
+        // get company details
+        $companyDetails = $client->getCompanyDetails();
+        
+        // approve invoice payment command
+        $invoiceId = 'invoice_id';
+        $approverId = 'approver_id';
+        $result = $client->approveInvoicePaymentCommand([
+            'invoiceId' => $invoiceId,
+            'approverId' => $approverId,
         ]);
         
     } catch (RequestException $requestException) {
