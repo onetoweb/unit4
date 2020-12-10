@@ -62,6 +62,9 @@ if ($client->getToken()) {
     
     try {
         
+        // get administration info list
+        $administrationInfoList = $client->getAdministrationInfoList();
+        
         // get product info list
         $productInfoList = $client->getProductInfoList();
         

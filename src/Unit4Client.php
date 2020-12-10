@@ -18,6 +18,18 @@ class Unit4Client extends BaseClient
      * @param array $query = []
      *
      * @return array|null
+     *
+     * @link https://api.online.unit4.nl/V22/Help/Api/GET-api-AdministrationInfoList
+     */
+    public function getAdministrationInfoList(array $query = []): ?array
+    {
+        return $this->get("/api/AdministrationInfoList", $query);
+    }
+    
+    /**
+     * @param array $query = []
+     *
+     * @return array|null
      * 
      * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-ProductInfoList
      */
