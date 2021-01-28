@@ -621,6 +621,22 @@ class Unit4Client extends BaseClient
     }
     
     /**
+     * @param int $fiscalYear
+     * @param string $journalId
+     * @param string $journalTransaction
+     *
+     * @return array|null
+     *
+     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-FinTrans-fiscalYear-journalId-journalTransaction
+     */
+    public function getFinTrans(int $fiscalYear, string $journalId, string $journalTransaction): ?array
+    {
+        $this->checkRequiredDatabase(__FUNCTION__);
+        
+        return $this->get("/api/{$this->database}/FinTrans/$fiscalYear/$journalId/$journalTransaction");
+    }
+    
+    /**
      * @param array $query
      *
      * @return array|null

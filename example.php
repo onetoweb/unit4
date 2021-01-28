@@ -296,6 +296,12 @@ if ($client->getToken()) {
             ]],
         ]);
         
+        // get fin trans
+        $fiscalYear = 2020;
+        $journalId = 'K';
+        $journalTransaction = 'journal_transaction';
+        $finTrans = $client->getFinTrans($fiscalYear, $journalId, $journalTransaction);
+        
         // get company details
         $companyDetails = $client->getCompanyDetails();
         
