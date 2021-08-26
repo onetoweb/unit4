@@ -253,7 +253,7 @@ class BaseClient
     }
     
     /**
-     * @param string $method = self::METHOD_GET
+     * @param string $method
      * @param string $endpoint
      * @param array $data = []
      * @param array $query = []
@@ -263,7 +263,7 @@ class BaseClient
      * 
      * @return mixed
      */
-    public function request(string $method = self::METHOD_GET, string $endpoint, array $data = [], array $query = [], bool $json = true, bool $decode = true)
+    public function request(string $method, string $endpoint, array $data = [], array $query = [], bool $json = true, bool $decode = true)
     {
         // build request haders
         $headers = [
