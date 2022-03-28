@@ -10,7 +10,7 @@ use Onetoweb\Unit4\BaseClient;
  * @author Jonathan van 't Ende <jvantende@onetoweb.nl>
  * @copyright Onetoweb. B.V.
  * 
- * @link https://sandbox.api.online.unit4.nl/V22/Help
+ * @link https://api.multivers.nl/V22/Help
  */
 class Unit4Client extends BaseClient
 {
@@ -19,7 +19,7 @@ class Unit4Client extends BaseClient
      *
      * @return array|null
      *
-     * @link https://api.online.unit4.nl/V22/Help/Api/GET-api-AdministrationInfoList
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-AdministrationInfoList
      */
     public function getAdministrationInfoList(array $query = []): ?array
     {
@@ -31,7 +31,7 @@ class Unit4Client extends BaseClient
      *
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-ProductInfoList
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-ProductInfoList
      */
     public function getProductInfoList(array $query = []): ?array
     {
@@ -45,7 +45,7 @@ class Unit4Client extends BaseClient
      *
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/POST-api-database-Product
+     * @link https://api.multivers.nl/V22/Help/Api/POST-api-database-Product
      */
     public function createProduct(array $data = []): ?array
     {
@@ -59,7 +59,7 @@ class Unit4Client extends BaseClient
      *
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-Product-productId
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-Product-productId
      */
     public function getProduct(string $productId): ?array
     {
@@ -73,7 +73,7 @@ class Unit4Client extends BaseClient
      *
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-CustomerInfoList
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-CustomerInfoList
      */
     public function getCustomerInfoList(): ?array
     {
@@ -87,7 +87,7 @@ class Unit4Client extends BaseClient
      *
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-Customer-customerId
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-Customer-customerId
      */
     public function getCustomer($id): ?array
     {
@@ -101,7 +101,7 @@ class Unit4Client extends BaseClient
      * 
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/POST-api-database-Customer
+     * @link https://api.multivers.nl/V22/Help/Api/POST-api-database-Customer
      */
     public function createCustomer(array $data = []): ?array
     {
@@ -113,7 +113,7 @@ class Unit4Client extends BaseClient
     /**
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-CompanyContactPersonList
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-CompanyContactPersonList
      */
     public function getCompanyContactPersonList(): ?array
     {
@@ -127,7 +127,7 @@ class Unit4Client extends BaseClient
      * 
      * @return array|null
      *
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-AddressList-organizationId
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-AddressList-organizationId
      */
     public function getAddressList(string $organizationId): ?array
     {
@@ -141,7 +141,7 @@ class Unit4Client extends BaseClient
      * 
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/POST-api-database-Address
+     * @link https://api.multivers.nl/V22/Help/Api/POST-api-database-Address
      */
     public function createAddress(array $data = [])
     {
@@ -156,7 +156,7 @@ class Unit4Client extends BaseClient
      *
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/POST-api-database-Order
+     * @link https://api.multivers.nl/V22/Help/Api/POST-api-database-Order
      */
     public function createOrder(array $data = []): ?array
     {
@@ -170,7 +170,7 @@ class Unit4Client extends BaseClient
      *
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-OrderInfoList-OpenOrders
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-OrderInfoList-OpenOrders
      */
     public function getOrderInfoListOpenOrders(array $query = []): ?array
     {
@@ -184,7 +184,7 @@ class Unit4Client extends BaseClient
      *
      * @return array|null
      *
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-OrderInfoList-OrdersReadyToPrintInvoice
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-OrderInfoList-OrdersReadyToPrintInvoice
      */
     public function getOrderInfoListOrdersReadyToPrintInvoice(array $query = []): ?array
     {
@@ -196,7 +196,7 @@ class Unit4Client extends BaseClient
     /**
      * @return array|null
      *
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-OrderStateNVL
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-OrderStateNVL
      */
     public function getOrderStateNVL(): ?array
     {
@@ -208,7 +208,7 @@ class Unit4Client extends BaseClient
     /**
      * @return array|null
      *
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-OrderTypeNVL
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-OrderTypeNVL
      */
     public function getOrderTypeNVL(): ?array
     {
@@ -222,7 +222,7 @@ class Unit4Client extends BaseClient
      *
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-Order-orderId
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-Order-orderId
      */
     public function getOrder(string $orderId): ?array
     {
@@ -236,7 +236,7 @@ class Unit4Client extends BaseClient
      *
      * @return array|null
      *
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/POST-api-database-ProcessOrderCommand_journalId_fiscalYear_periodNumber_invoiceDate_orderId_journalTransaction
+     * @link https://api.multivers.nl/V22/Help/Api/POST-api-database-ProcessOrderCommand_journalId_fiscalYear_periodNumber_invoiceDate_orderId_journalTransaction
      */
     public function processOrderCommand(array $query = []): ?array
     {
@@ -250,7 +250,7 @@ class Unit4Client extends BaseClient
      *
      * @return array|null
      *
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-GetShippingOrderDocumentCommand_orderId_format
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-GetShippingOrderDocumentCommand_orderId_format
      */
     public function getShippingOrderDocumentCommand(array $query = []): ?array
     {
@@ -262,7 +262,7 @@ class Unit4Client extends BaseClient
     /**
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-OrderLineTypeNVL
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-OrderLineTypeNVL
      */
     public function getOrderLineTypeNVL(): ?array
     {
@@ -276,7 +276,7 @@ class Unit4Client extends BaseClient
      * 
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/DELETE-api-database-Customer-customerId
+     * @link https://api.multivers.nl/V22/Help/Api/DELETE-api-database-Customer-customerId
      */
     public function deleteCustomer($id): ?array
     {
@@ -288,7 +288,7 @@ class Unit4Client extends BaseClient
     /**
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-FiscalYearInfoList
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-FiscalYearInfoList
      */
     public function getFiscalYearInfoList(): ?array
     {
@@ -300,7 +300,7 @@ class Unit4Client extends BaseClient
     /**
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-JournalInfoList 
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-JournalInfoList 
      */
     public function getJournalInfoList(): ?array
     {
@@ -315,7 +315,7 @@ class Unit4Client extends BaseClient
      * 
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-JournalTransactionInfoList-journalId-fiscalYear
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-JournalTransactionInfoList-journalId-fiscalYear
      */
     public function getJournalTransactionInfoList($journalId, $fiscalYear): ?array
     {
@@ -327,7 +327,7 @@ class Unit4Client extends BaseClient
     /**
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-JournalTypeNVL
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-JournalTypeNVL
      */
     public function getJournalTypeNVL(): ?array
     {
@@ -339,7 +339,7 @@ class Unit4Client extends BaseClient
     /**
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-MailMessageInfoList
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-MailMessageInfoList
      */
     public function getMailMessageInfoList(): ?array
     {
@@ -353,7 +353,7 @@ class Unit4Client extends BaseClient
      * 
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-ReportTemplateConfiguration-configId
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-ReportTemplateConfiguration-configId
      */
     public function getReportTemplateConfiguration(string $configId): ?array
     {
@@ -365,7 +365,7 @@ class Unit4Client extends BaseClient
     /**
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-ReportTemplateConfigurationList
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-ReportTemplateConfigurationList
      */
     public function getReportTemplateConfigurationList(): ?array
     {
@@ -377,7 +377,7 @@ class Unit4Client extends BaseClient
     /**
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-MailTemplateList
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-MailTemplateList
      */
     public function getMailTemplateList(): ?array
     {
@@ -389,7 +389,7 @@ class Unit4Client extends BaseClient
     /**
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-PaymentConditionInfoList
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-PaymentConditionInfoList
      */
     public function getPaymentConditionInfoList(): ?array
     {
@@ -401,7 +401,7 @@ class Unit4Client extends BaseClient
     /**
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-PeriodInfoList
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-PeriodInfoList
      */
     public function getPeriodInfoList(): ?array
     {
@@ -415,7 +415,7 @@ class Unit4Client extends BaseClient
      * 
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/POST-api-database-CustomerInvoice
+     * @link https://api.multivers.nl/V22/Help/Api/POST-api-database-CustomerInvoice
      */
     public function createCustomerInvoice(array $data = []): ?array
     {
@@ -429,7 +429,7 @@ class Unit4Client extends BaseClient
      *
      * @return array|null
      *
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-CustomerInvoice-invoiceId
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-CustomerInvoice-invoiceId
      */
     public function getCustomerInvoice(string $invoiceId): ?array
     {
@@ -444,7 +444,7 @@ class Unit4Client extends BaseClient
      *
      * @return array|null
      *
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-CustomerInvoiceInfoList-ByFiscalYear-fiscalYear-invoiceState
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-CustomerInvoiceInfoList-ByFiscalYear-fiscalYear-invoiceState
      */
     public function getCustomerInvoiceInfoListByFiscalYear(int $fiscalYear, int $invoiceState): ?array
     {
@@ -459,7 +459,7 @@ class Unit4Client extends BaseClient
      *
      * @return mixed
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-Documents-Invoice-ByOrderId-orderId_format
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-Documents-Invoice-ByOrderId-orderId_format
      */
     public function getDocumentInvoiceByOrderId(string $orderId, array $query = [])
     {
@@ -474,7 +474,7 @@ class Unit4Client extends BaseClient
      *
      * @return mixed
      *
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-Documents-Invoice-invoiceId_format
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-Documents-Invoice-invoiceId_format
      */
     public function getDocumentInvoiceByInvoiceId(string $invoiceId, array $query = [])
     {
@@ -489,7 +489,7 @@ class Unit4Client extends BaseClient
      *
      * @return mixed
      *
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-Documents-Order-orderId_format
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-Documents-Order-orderId_format
      */
     public function getDocumentOrder(string $orderId, array $query = [])
     {
@@ -504,7 +504,7 @@ class Unit4Client extends BaseClient
      *
      * @return mixed
      *
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-Documents-Invoice-ByOrderIdForWeb-orderId_format
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-Documents-Invoice-ByOrderIdForWeb-orderId_format
      */
     public function getDocumentInvoiceByOrderIdForWeb(string $orderId, array $query = [])
     {
@@ -519,7 +519,7 @@ class Unit4Client extends BaseClient
      *
      * @return mixed
      *
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-Documents-Invoice-ForWeb-invoiceId_format
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-Documents-Invoice-ForWeb-invoiceId_format
      */
     public function getDocumentInvoiceForWeb(string $invoiceId, array $query = [])
     {
@@ -533,7 +533,7 @@ class Unit4Client extends BaseClient
      *
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-AccountInfoList-fiscalYear
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-AccountInfoList-fiscalYear
      */
     public function getAccountInfoList(int $fiscalYear): ?array
     {
@@ -545,7 +545,7 @@ class Unit4Client extends BaseClient
     /**
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-AccountCategoryNVL
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-AccountCategoryNVL
      */
     public function getAccountCategoryNVL(): ?array
     {
@@ -557,7 +557,7 @@ class Unit4Client extends BaseClient
     /**
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-AccountManagerNVL
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-AccountManagerNVL
      */
     public function getAccountManagerNVL(): ?array
     {
@@ -569,7 +569,7 @@ class Unit4Client extends BaseClient
     /**
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-DocumentTypeInfoList
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-DocumentTypeInfoList
      */
     public function getDocumentTypeInfoList(): ?array
     {
@@ -583,7 +583,7 @@ class Unit4Client extends BaseClient
      * 
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-DocumentTypeInfo-type
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-DocumentTypeInfo-type
      */
     public function getDocumentTypeInfo(int $type): ?array
     {
@@ -597,7 +597,7 @@ class Unit4Client extends BaseClient
      *
      * @return int|null
      *
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/POST-api-database-GetNextJournalTransactionCommand_fiscalYear_journalId
+     * @link https://api.multivers.nl/V22/Help/Api/POST-api-database-GetNextJournalTransactionCommand_fiscalYear_journalId
      */
     public function getNextJournalTransactionCommand(array $query = []): ?int
     {
@@ -611,7 +611,7 @@ class Unit4Client extends BaseClient
      *
      * @return array|null
      *
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/POST-api-database-FinTrans
+     * @link https://api.multivers.nl/V22/Help/Api/POST-api-database-FinTrans
      */
     public function createFinTrans(array $data = []): ?array
     {
@@ -627,7 +627,7 @@ class Unit4Client extends BaseClient
      *
      * @return array|null
      *
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-FinTrans-fiscalYear-journalId-journalTransaction
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-FinTrans-fiscalYear-journalId-journalTransaction
      */
     public function getFinTrans(int $fiscalYear, string $journalId, string $journalTransaction): ?array
     {
@@ -641,7 +641,7 @@ class Unit4Client extends BaseClient
      *
      * @return array|null
      *
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/POST-api-database-ApproveInvoicePaymentCommand_invoiceId_approverId
+     * @link https://api.multivers.nl/V22/Help/Api/POST-api-database-ApproveInvoicePaymentCommand_invoiceId_approverId
      */
     public function approveInvoicePaymentCommand(array $query): ?array
     {
@@ -653,7 +653,7 @@ class Unit4Client extends BaseClient
     /**
      * @return array|null
      * 
-     * @link https://sandbox.api.online.unit4.nl/V22/Help/Api/GET-api-database-CompanyDetails
+     * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-CompanyDetails
      */
     public function getCompanyDetails()
     {
