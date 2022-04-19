@@ -86,12 +86,12 @@ class BaseClient
         
         // build base uri
         if ($this->sandbox) {
-            $this->baseUrl = 'https://sandbox.api.multivers.nl';
+            $this->baseUrl = 'https://sandbox-api.multivers.nl';
         } else {
             $this->baseUrl = 'https://api.multivers.nl';
         }
         
-        $this->baseUrl .= '/v'.$this->version;
+        $this->baseUrl .= '/V'.$this->version;
     }
     
     /**
@@ -308,7 +308,8 @@ class BaseClient
             
             // build guzzle client
             $guzzleClient = new GuzzleClient([
-                'verify' => false,
+                RequestOptions::VERIFY => false,
+                
             ]);
             
             // build guzzle request
