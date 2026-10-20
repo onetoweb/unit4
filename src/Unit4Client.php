@@ -83,13 +83,13 @@ class Unit4Client extends BaseClient
     }
     
     /**
-     * @param $id
+     * @param string $id
      *
      * @return array|null
      * 
      * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-Customer-customerId
      */
-    public function getCustomer($id): ?array
+    public function getCustomer(string $id): ?array
     {
         $this->checkRequiredDatabase(__FUNCTION__);
         
@@ -139,11 +139,11 @@ class Unit4Client extends BaseClient
     /**
      * @param array $data = []
      * 
-     * @return array|null
+     * @return mixed
      * 
      * @link https://api.multivers.nl/V22/Help/Api/POST-api-database-Address
      */
-    public function createAddress(array $data = [])
+    public function createAddress(array $data = []): mixed
     {
         $this->checkRequiredDatabase(__FUNCTION__);
         
@@ -272,13 +272,13 @@ class Unit4Client extends BaseClient
     }
     
     /**
-     * @param $id
+     * @param string $id
      * 
      * @return array|null
      * 
      * @link https://api.multivers.nl/V22/Help/Api/DELETE-api-database-Customer-customerId
      */
-    public function deleteCustomer($id): ?array
+    public function deleteCustomer(string $id): ?array
     {
         $this->checkRequiredDatabase(__FUNCTION__);
         
@@ -310,14 +310,14 @@ class Unit4Client extends BaseClient
     }
     
     /**
-     * @param $journalId
-     * @param $fiscalYear
+     * @param string $journalId
+     * @param int $fiscalYear
      * 
      * @return array|null
      * 
      * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-JournalTransactionInfoList-journalId-fiscalYear
      */
-    public function getJournalTransactionInfoList($journalId, $fiscalYear): ?array
+    public function getJournalTransactionInfoList(string $journalId, int $fiscalYear): ?array
     {
         $this->checkRequiredDatabase(__FUNCTION__);
         
@@ -461,7 +461,7 @@ class Unit4Client extends BaseClient
      * 
      * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-Documents-Invoice-ByOrderId-orderId_format
      */
-    public function getDocumentInvoiceByOrderId(string $orderId, array $query = [])
+    public function getDocumentInvoiceByOrderId(string $orderId, array $query = []): mixed
     {
         $this->checkRequiredDatabase(__FUNCTION__);
         
@@ -476,7 +476,7 @@ class Unit4Client extends BaseClient
      *
      * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-Documents-Invoice-invoiceId_format
      */
-    public function getDocumentInvoiceByInvoiceId(string $invoiceId, array $query = [])
+    public function getDocumentInvoiceByInvoiceId(string $invoiceId, array $query = []): mixed
     {
         $this->checkRequiredDatabase(__FUNCTION__);
         
@@ -491,7 +491,7 @@ class Unit4Client extends BaseClient
      *
      * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-Documents-Order-orderId_format
      */
-    public function getDocumentOrder(string $orderId, array $query = [])
+    public function getDocumentOrder(string $orderId, array $query = []): mixed
     {
         $this->checkRequiredDatabase(__FUNCTION__);
         
@@ -506,7 +506,7 @@ class Unit4Client extends BaseClient
      *
      * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-Documents-Invoice-ByOrderIdForWeb-orderId_format
      */
-    public function getDocumentInvoiceByOrderIdForWeb(string $orderId, array $query = [])
+    public function getDocumentInvoiceByOrderIdForWeb(string $orderId, array $query = []): mixed
     {
         $this->checkRequiredDatabase(__FUNCTION__);
         
@@ -521,7 +521,7 @@ class Unit4Client extends BaseClient
      *
      * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-Documents-Invoice-ForWeb-invoiceId_format
      */
-    public function getDocumentInvoiceForWeb(string $invoiceId, array $query = [])
+    public function getDocumentInvoiceForWeb(string $invoiceId, array $query = []): mixed
     {
         $this->checkRequiredDatabase(__FUNCTION__);
         
@@ -651,11 +651,11 @@ class Unit4Client extends BaseClient
     }
     
     /**
-     * @return array|null
+     * @return mixed
      * 
      * @link https://api.multivers.nl/V22/Help/Api/GET-api-database-CompanyDetails
      */
-    public function getCompanyDetails()
+    public function getCompanyDetails(): mixed
     {
         $this->checkRequiredDatabase(__FUNCTION__);
         

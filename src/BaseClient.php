@@ -7,7 +7,9 @@ use GuzzleHttp\RequestOptions;
 use GuzzleHttp\Exception\RequestException as GuzzleRequestException;
 use Onetoweb\Unit4\Exception\{RequestException, DatabaseException};
 use Onetoweb\Unit4\Token;
+use Onetoweb\Unit4\Config\Method;
 use DateTime;
+use Closure;
 
 /**
  * Unit4 Api Base Client.
@@ -19,55 +21,25 @@ use DateTime;
  */
 class BaseClient
 {
-    const METHOD_GET = 'GET';
-    const METHOD_POST = 'POST';
-    const METHOD_PUT = 'PUT';
-    const METHOD_DELETE = 'DELETE';
+    /**
+     * @var string|null
+     */
+    private ?string $baseUrl = null;
     
     /**
-     * @var string
+     * @var Token|null
      */
-    private $clientId;
+    private ?Token $token = null;
     
     /**
-     * @var string
+     * @var Closure|null
      */
-    private $clientSecret;
+    private ?Closure $updateTokenCallback = null;
     
     /**
-     * @var string
+     * @var string|null
      */
-    private $redirectUrl;
-    
-    /**
-     * @var int
-     */
-    private $version;
-    
-    /**
-     * @var bool
-     */
-    private $sandbox;
-    
-    /**
-     * @var string
-     */
-    private $baseUrl;
-    
-    /**
-     * @var Token
-     */
-    private $token;
-    
-    /**
-     * @var callable
-     */
-    private $updateTokenCallback;
-    
-    /**
-     * @var string
-     */
-    protected $database;
+    protected ?string $database = null;
     
     /**
      * @param string $clientId
@@ -76,14 +48,20 @@ class BaseClient
      * @param int $version
      * @param bool $sandbox = false
      */
-    public function __construct(string $clientId, string $clientSecret, string $redirectUrl, int $version = 21, bool $sandbox = false)
-    {
-        $this->clientId = $clientId;
-        $this->clientSecret = $clientSecret;
-        $this->redirectUrl = $redirectUrl;
-        $this->version = $version;
-        $this->sandbox = $sandbox;
+    public function __construct(
         
+        #[\SensitiveParameter]
+        private string $clientId,
+        
+        #[\SensitiveParameter]
+        private string $clientSecret,
+        
+        #[\SensitiveParameter]
+        private string $redirectUrl,
+        
+        private int $version = 21,
+        private bool $sandbox = false
+    ) {
         // build base uri
         if ($this->sandbox) {
             $this->baseUrl = 'https://sandbox-api.multivers.nl';
@@ -160,9 +138,9 @@ class BaseClient
     }
     
     /**
-     * @param callable $updateTokenCallback
+     * @param Closure $updateTokenCallback
      */
-    public function setUpdateTokenCallback(callable $updateTokenCallback): void
+    public function setUpdateTokenCallback(Closure $updateTokenCallback): void
     {
         $this->updateTokenCallback = $updateTokenCallback;
     }
@@ -207,12 +185,13 @@ class BaseClient
     /**
      * @param string $endpoint
      * @param array $query = []
-     *
+     * @param bool $decode = true
+     * 
      * @return mixed
      */
-    public function get(string $endpoint, array $query = [], bool $decode = true)
+    public function get(string $endpoint, array $query = [], bool $decode = true): mixed
     {
-        return $this->request(self::METHOD_GET, $endpoint, [], $query, true, $decode);
+        return $this->request(Method::GET, $endpoint, [], $query, true, $decode);
     }
     
     /**
@@ -225,7 +204,7 @@ class BaseClient
      */
     public function post(string $endpoint, array $data = [], array $query = [], bool $json = true): ?array
     {
-        return $this->request(self::METHOD_POST, $endpoint, $data, $query, $json);
+        return $this->request(Method::POST, $endpoint, $data, $query, $json);
     }
     
     /**
@@ -238,7 +217,7 @@ class BaseClient
      */
     public function put(string $endpoint, array $data = [], array $query = [], bool $json = true): ?array
     {
-        return $this->request(self::METHOD_PUT, $endpoint, $data, $query, $json);
+        return $this->request(Method::PUT, $endpoint, $data, $query, $json);
     }
     
     /**
@@ -249,11 +228,11 @@ class BaseClient
      */
     public function delete(string $endpoint, array $query = []): ?array
     {
-        return $this->request(self::METHOD_DELETE, $endpoint, [], $query);
+        return $this->request(Method::DELETE, $endpoint, [], $query);
     }
     
     /**
-     * @param string $method
+     * @param Method $method
      * @param string $endpoint
      * @param array $data = []
      * @param array $query = []
@@ -263,7 +242,7 @@ class BaseClient
      * 
      * @return mixed
      */
-    public function request(string $method, string $endpoint, array $data = [], array $query = [], bool $json = true, bool $decode = true)
+    public function request(Method $method, string $endpoint, array $data = [], array $query = [], bool $json = true, bool $decode = true): mixed
     {
         // build request haders
         $headers = [
@@ -291,7 +270,7 @@ class BaseClient
             $options[RequestOptions::HEADERS] = $headers;
             
             // add post data body
-            if (in_array($method, [self::METHOD_POST, self::METHOD_PUT])) {
+            if (in_array($method, [Method::POST, Method::PUT])) {
                 
                 if ($json) {
                     $options[RequestOptions::JSON] = $data;
@@ -313,7 +292,7 @@ class BaseClient
             ]);
             
             // build guzzle request
-            $result = $guzzleClient->request($method, $this->baseUrl . $endpoint, $options);
+            $result = $guzzleClient->request($method->value, $this->baseUrl . $endpoint, $options);
             
             // get contents
             $contents = $result->getBody()->getContents();
@@ -349,10 +328,12 @@ class BaseClient
     
     /**
      * @param string $function
-     *  
+     * 
      * @throws DatabaseException if no database is set 
+     * 
+     * @return void
      */
-    protected function checkRequiredDatabase(string $function = null)
+    protected function checkRequiredDatabase(string $function = null): void
     {
         if ($this->database === null) {
             
